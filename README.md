@@ -1,6 +1,6 @@
 # Heart Disease Prediction Project
 
-This project contains multiple machine learning notebooks for predicting heart disease from the `heart.csv` dataset. It compares three classifiers - Gaussian Naive Bayes, Logistic Regression, and Random Forest - in both initial and optimized notebook versions.
+This project contains multiple machine learning notebooks for predicting heart disease from the `heart.csv` dataset. It compares four classifiers - Gaussian Naive Bayes, Logistic Regression, Random Forest, and Support Vector Machine - in both initial and optimized notebook versions.
 
 The notebooks cover common preprocessing and evaluation steps such as:
 
@@ -79,6 +79,23 @@ The target variable is `HeartDisease`, where `0` means no heart disease and `1` 
   - Reported training accuracy: `0.8991825613079019`
   - Reported test accuracy: `0.8641304347826086`
 
+### 4. Support Vector Machine
+
+- [SVM_base_model.ipynb](SVM_base_model.ipynb)
+  - Builds an SVM heart disease classifier using the `rbf` kernel
+  - Uses SMOTE and `StandardScaler` because SVM is sensitive to feature scaling
+  - Evaluates the model with a classification report, confusion matrix, and accuracy plot
+  - Reported test accuracy: `0.8696`
+
+- [SVM_optimized_model.ipynb](SVM_optimized_model.ipynb)
+  - Applies `StandardScaler` and SMOTE before training the SVM model
+  - Uses `GridSearchCV` to tune SVM hyperparameters
+  - Evaluates the final model with accuracy, classification report, confusion matrix, and ROC-AUC
+  - Best parameters found: `C=1`, `gamma=scale`, `kernel=rbf`
+  - Reported training accuracy: `0.8953`
+  - Reported testing accuracy: `0.8913`
+  - Uses ROC-AUC as an additional metric because SVM does not provide feature importances
+
 ## Project Workflow
 
 1. Load `heart.csv`
@@ -87,7 +104,7 @@ The target variable is `HeartDisease`, where `0` means no heart disease and `1` 
 4. Balance the training set using SMOTE
 5. Train one of the classifiers
 6. Tune hyperparameters in the optimized notebooks
-7. Evaluate the final model using accuracy, classification report, and confusion matrix
+7. Evaluate the final model using accuracy, classification report, confusion matrix, learning curves, and ROC-AUC where applicable
 
 ## Requirements
 
